@@ -1,5 +1,5 @@
 body {
-  font: 16px arial, sans-serif;
+  font: 16px "Trebuchet MS", Helvetica, sans-serif;
 }
 
 #wrapperDiv {
@@ -14,11 +14,11 @@ body {
 }
 
 #allButtonsDiv button {
-  font-size: 12px;
+  font-size: 14px;
   color: white;
   background-color: black;
   margin-right: 16px;
-  width: 55px;
+  width: 70px;
   height: 25px;
   border: none;
   text-align: center;
@@ -27,6 +27,10 @@ body {
 
 #allButtonsDiv button:hover{
   cursor: pointer;
+}
+
+button.newBtn {
+  background-color: red;
 }
 
 #allNotesDiv {
@@ -42,7 +46,17 @@ body {
   float: left;
 }
 
+.noteText {
+  margin-left: 35px;
+}
+
 .noteText:hover {
   cursor: pointer;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  text-decoration: underline;
 }
+
+
+/*
+ git test - zadnja promjena
+*/
