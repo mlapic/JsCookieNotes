@@ -4,6 +4,45 @@
     <meta charset=UTF-8 />
     <title>CSS TEST</title>
     <link rel="stylesheet" type="text/css" href="cNotes.css" />
+    <script>
+    
+      var noteIdSelected = "";
+      
+      function noteSelected(noteId) {
+        if(noteIdSelected != "") {
+          deselect(noteIdSelected);
+        }
+        
+        if(noteIdSelected != noteId) {
+          noteIdSelected = noteId;
+          select(noteId);  
+        } else {
+          noteIdSelected = "";
+        }
+              
+      }
+      
+      function select(noteId) {
+        document.getElementById(noteId).className += " noteTextSelected";
+        document.getElementById("updateBtn").style.visibility = "visible";
+        document.getElementById("delBtn").style.visibility = "visible";
+      }
+      
+      function deselect(noteId) {
+        document.getElementById(noteId).className = "noteText";
+        document.getElementById("updateBtn").style.visibility = "hidden";
+        document.getElementById("delBtn").style.visibility = "hidden";
+      }
+      
+      function updateNote() {
+        alert("update: " + noteIdSelected);
+      }
+      
+      function deleteNote() {
+        alert("delete: " + noteIdSelected);
+      }
+      
+    </script>
   </head>
   <body>
     <div id="wrapperDiv">
@@ -11,12 +50,12 @@
     
     
       <div id="allButtonsDiv">
-        <button class="newBtn">New</button>
-        <button>Update</button>
-        <button>Delete</button>
+        <button id="newBtn" class="controlBtns">New</button>
+        <button id="updateBtn" class="controlBtns" onclick="updateNote();">Update</button>
+        <button id="delBtn" class="controlBtns" onclick="deleteNote();">Delete</button>
       </div>
       
-      
+      <!-- zadnja promjena na laptopu -->
       
       <div id="allNotesDiv">
       
@@ -26,7 +65,7 @@
           <div class="checkBoxDiv">
             <input type="checkbox" checked>
           </div>
-          <div class="noteText">            
+          <div id="noteText1" class="noteText" onclick="noteSelected('noteText1')">            
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero.
           </div>
         </div>
@@ -36,7 +75,7 @@
           <div class="checkBoxDiv">
             <input type="checkbox">
           </div>
-          <div class="noteText">
+          <div id="noteText2" class="noteText" onclick="noteSelected('noteText2')">
             Aenean varius sem non laoreet efficitur. Aliquam pharetra laoreet tincidunt.
           </div>
         </div>
@@ -46,7 +85,7 @@
           <div class="checkBoxDiv">
             <input type="checkbox" checked>
           </div>
-          <div class="noteText">
+          <div id="noteText3" class="noteText" onclick="noteSelected('noteText3')">
             Maecenas ipsum tellus, maximus in gravida vel, pretium eu mauris. Fusce finibus bibendum dui, quis congue neque interdum eget.
           </div>
         </div>
@@ -56,7 +95,7 @@
           <div class="checkBoxDiv">
             <input type="checkbox" checked>
           </div>
-          <div class="noteText">
+          <div id="noteText4" class="noteText" onclick="noteSelected('noteText4')">
             Ut in turpis tincidunt odio euismod iaculis vitae eget eros.
           </div>
         </div>
@@ -66,7 +105,7 @@
           <div class="checkBoxDiv">
             <input type="checkbox">
           </div>
-          <div class="noteText">
+          <div id="noteText5" class="noteText" onclick="noteSelected('noteText5')">
             Morbi commodo posuere enim, ut posuere erat vestibulum vitae. Donec vitae eros volutpat, dictum risus eget, vestibulum mauris. Donec finibus varius molestie.
           </div>
         </div>

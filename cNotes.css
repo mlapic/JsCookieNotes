@@ -13,7 +13,7 @@ body {
   margin-bottom: 25px;
 }
 
-#allButtonsDiv button {
+.controlBtns {
   font-size: 14px;
   color: white;
   background-color: black;
@@ -25,12 +25,20 @@ body {
   text-decoration: none;
 }
 
-#allButtonsDiv button:hover{
+.controlBtns:hover{
   cursor: pointer;
 }
 
-button.newBtn {
-  background-color: red;
+#newBtn {
+  margin-right: 64px;
+}
+
+#updateBtn {
+  visibility: hidden;
+}
+
+#delBtn {
+  visibility: hidden;
 }
 
 #allNotesDiv {
@@ -52,11 +60,9 @@ button.newBtn {
 
 .noteText:hover {
   cursor: pointer;
-  /*border: 1px solid black;*/
   text-decoration: underline;
 }
 
-
-/*
- git test - zadnja promjena
-*/
+.noteTextSelected {
+  text-decoration: underline;
+}
