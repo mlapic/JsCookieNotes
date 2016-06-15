@@ -23,9 +23,6 @@ body {
   border: none;
   text-align: center;
   text-decoration: none;
-}
-
-.controlBtns:hover{
   cursor: pointer;
 }
 
@@ -66,3 +63,29 @@ body {
 .noteTextSelected {
   text-decoration: underline;
 }
+
+
+
+
+/* css for menu button */
+
+.menu {
+  cursor: pointer;
+  float: right;
+  margin-right: 35px;
+}
+
+.square {
+  width: 25px;
+  background: black;
+  padding: 2px;
+}
+
+.line {
+  width: 19px;
+  height: 3px;
+  background: white;
+  margin: 3px;
+}
+
+/* ------------------- */
