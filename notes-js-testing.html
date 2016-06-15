@@ -5,29 +5,40 @@
     <title>TEST</title>
     <script>
     
-      var cookieExpiration = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-      var inputFirstClick = false;
+      var cookieExpirationAdd = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      var cookieExpirationDel = "; expires=Thu, 01 Jan 1970 00:00:01 GMT";
       
       function addCookie() {
         var noteId = Math.round(Math.random() * 10000);
-        var noteText = document.getElementById("newNoteInputDiv").value;
-        document.cookie = "note" + noteId + "=" + noteText + cookieExpiration;     
-        showAllCookies();
-        document.getElementById("newNoteInputDiv").innerHTML = "Type new note...";
-        document.getElementById("newNoteInputDiv").className = ""
-        inputFirstClick = false;
-      }
-      
-      function updateCookie(cName) {
-        console.log("-- update: " + cName);
-        console.log("-- value: " + document.getElementById(cName).innerHTML);
-        document.cookie = cName + "=" + document.getElementById(cName).innerHTML + cookieExpiration;
+        var noteText = prompt("enter text");
+        document.cookie = "note" + noteId + "=" + noteText + cookieExpirationAdd;
+        console.log(noteText);
         showAllCookies();
       }
       
-      function deleteCookie(cName) {
+      function updateCookie() {
+        var cNameToUpdate = prompt("cName:");
+        
+        var cArray = document.cookie.split(";");
+        var noteText = "";
+        for(var j = 0; j < cArray.length; j++) {
+          var cName = cArray[j].trim().split("=")[0];
+          if(cName == cNameToUpdate) {
+            noteText = cArray[j].trim().split("=")[1];
+            break;
+          }
+        }
+        
+        var updateText = prompt("update", noteText)
+        
+        document.cookie = cNameToUpdate + "=" + updateText + cookieExpirationAdd;
+        showAllCookies();
+      }
+      
+      function deleteCookie() {
+        var cName = prompt("cName:");
         console.log("-- del: " + cName);
-        document.cookie = cName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        document.cookie = cName + "=" + cookieExpirationDel;
         showAllCookies();
       }
 
@@ -42,54 +53,26 @@
         for(var j = 0; j < cArray.length; j++) {
           var cName = cArray[j].trim().split("=")[0];
           var cValue = cArray[j].trim().split("=")[1];
-          output1 += '<div id="' + cName + '">' + cValue + '</div>';
-          output1 += '<br><input type="button" value="Delete" onclick="deleteCookie(\'' + cName + '\');">';
-          output1 += ' <input type="button" value="Update" onclick="updateCookie(\'' + cName + '\');"><br><br>';
+          output1 += cName + ': ' + cValue + '<br>';
         }
         document.getElementById("outDiv01").innerHTML = output1;
       }
       
-      function setText(cValue) {
-        document.getElementById("noteTextInput").value = cValue;
-      }
-      
-      function newNoteInputDivOnClick() {
-        if(inputFirstClick == false) {
-          inputFirstClick = true;
-          document.getElementById("newNoteInputDiv").innerHTML = "";          
-          document.getElementById("newNoteInputDiv").className = 'newNoteInputDiv2';
-        }
-      }
-      
-      function newNoteInputDivOnBlur() {
-        document.getElementById("newNoteInputDiv").innerHTML = "Type new note...";
-        document.getElementById("newNoteInputDiv").className = ""
-        inputFirstClick = false;
-      }
-      
   </script>
   </head>
-  <body onload="showAllCookies();">
+  <body>
        
-    <div id="outDiv01"></div>
-    
-    <br><br><br>
-    
-    <div>
-      <!--<div id="newNoteInputDiv" contenteditable="true" onClick="newNoteInputDivOnClick();">Type new note...</div>-->
-      <input type="text" id="newNoteInputDiv"><br>
-      <input type="button" id="addCookieBtn" value="Add Note" onclick="addCookie();">
-    </div>
-
-    <br><br><br><br><br>
-    
     <div>
       <input type="button" id="addCookieBtn" value="Add Cookie" onclick="addCookie();"><br>
       <input type="button" id="updateCookieBtn" value="Update Cookie" onclick="updateCookie();"><br>
       <input type="button" id="delCookieBtn" value="Delete Cookie" onclick="deleteCookie();"><br>
-      <input type="button" id="testBtn" value="Test" onclick="test();"> 
+      <input type="button" id="testBtn" value="Test" onclick="test();"><br>
       <input type="button" id="showAllBtn" value="Show All Cookies" onclick="showAllCookies();">
     </div>
     
+    <hr>
+    
+    <div id="outDiv01"></div>
+
   </body>
 </html>
