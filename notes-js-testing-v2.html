@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=UTF-8 />
+    <title>TEST</title>
+    <script>
+    
+      var cookieExpirationAdd = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      var cookieExpirationDel = "; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      
+      function addCookie() {
+        var noteId = Math.round(Math.random() * 10000);
+        var noteText = prompt("enter text");
+        document.cookie = "note" + noteId + "=" + noteText + cookieExpirationAdd;
+        console.log(noteText);
+        showAllCookies();
+      }
+      
+      function updateCookie() {
+        var cNameToUpdate = prompt("cName:");
+        
+        
+        var cArray = document.cookie.split(";");
+        var noteText = "";
+        for(var j = 0; j < cArray.length; j++) {
+          var cName = cArray[j].trim().split("=")[0];
+          if(cName == cNameToUpdate) {
+            noteText = cArray[j].trim().split("=")[1];
+            break;
+          }
+        }
+        
+        var updateText = prompt("update", noteText)
+        
+        document.cookie = cNameToUpdate + "=" + updateText + cookieExpirationAdd;
+        showAllCookies();
+      }
+      
+      function deleteCookie() {
+        var cName = prompt("cName:");
+        console.log("-- del: " + cName);
+        document.cookie = cName + "=" + cookieExpirationDel;
+        showAllCookies();
+      }
+
+      function showAllCookies() {
+        if(document.cookie === '') {
+          document.getElementById("outDiv01").innerHTML = 'nothing';
+          return;
+        }
+        console.log("(" + document.cookie.length + ") " + document.cookie);
+        var cArray = document.cookie.split(";");
+        var output1 = '';        
+        for(var j = 0; j < cArray.length; j++) {
+          var cName = cArray[j].trim().split("=")[0];
+          var cValue = cArray[j].trim().split("=")[1];
+          output1 += cName + ': ' + cValue + '<br>';
+        }
+        document.getElementById("outDiv01").innerHTML = output1;
+      }
+      
+  </script>
+  </head>
+  <body>
+       
+    <div>
+      <input type="button" id="addCookieBtn" value="Add Cookie" onclick="addCookie();"><br>
+      <input type="button" id="updateCookieBtn" value="Update Cookie" onclick="updateCookie();"><br>
+      <input type="button" id="delCookieBtn" value="Delete Cookie" onclick="deleteCookie();"><br>
+      <input type="button" id="testBtn" value="Test" onclick="test();"><br>
+      <input type="button" id="showAllBtn" value="Show All Cookies" onclick="showAllCookies();">
+    </div>
+    
+    <hr>
+    
+    <div id="outDiv01"></div>
+
+  </body>
+</html>
