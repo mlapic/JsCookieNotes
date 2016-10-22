@@ -1,92 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset=UTF-8 />
-    <title>TEST</title>
-    <script>
+
+  
+    <!-- <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" /> -->
     
-      var cookieExpirationAdd = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-      var cookieExpirationDel = "; expires=Thu, 01 Jan 1970 00:00:01 GMT";
-        
-      function initN() {
-        showAllCookies();
-      }
-        
-      
-        
-      
-      
-      
+    <title>TEST</title>
+    
+    <!-- smart phone css  -->
+    <!-- <link href="assets/phone.css" rel="stylesheet" type="text/css" media="all and (min-width: 0px) and (max-width: 480px)" /> -->
 
-        
-        
-        
-        
-        
-      // ------------- Cookie functions -------------
-        
-      function setCookie(cName, cValue) {
-        document.cookie = cName + "=" + cValue + cookieExpirationAdd;            
-      }
-      
-      function deleteCookie(cName) {
-        document.cookie = cName + "=" + cookieExpirationDel;
-      }
-      
-      function getCookieValue(cName) {
-        var cArray = document.cookie.split(";");
-        var cNameTmp = '';
-        for(var i = 0; i < cArray.length; i++) {
-          cNameTmp = cArray[i].trim().split("=")[0];
-          if(cNameTmp === cName) {
-            return cArray[i].trim().split("=")[1];
-          }
-        }
-        return '';
-      }
-      
-      function deleteAllCookies() {
-        if(document.cookie != '') {
-          var cArray = document.cookie.split(";");
-          for(var i = 0; i < cArray.length; i++) {
-            deleteCookie(cArray[i].trim().split("=")[0])
-          }
-        }
-      }
-      
-      
-      function showAllCookies() {
-        if(document.cookie != '') {
-          document.getElementById("outDiv01").innerHTML = document.cookie +
-            ' [' + document.cookie.length + ']';
-        } else {
-          document.getElementById("outDiv01").innerHTML = 'nothing';
-        }          
-      }
-        
-        
+    <!-- Tablet -->
+    <!-- <link href="assets/tablet.css" rel="stylesheet" type="text/css" media="all and (min-width: 481px) and (max-width: 800px)" /> -->
 
-      
-  </script>
+    <!-- Desktop -->
+    <!-- <link href="assets/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:801px)"> -->
+
+
+    <meta charset="UTF-8" />
+    
+    <link rel="stylesheet" href="notes-js-testing.css">
+    
+    <script src="notes-js-testing.js"></script>
+    
   </head>
   <body>
-       
-    <div>
-      <input type="button" id="b1" value="New Note" onclick="createNote();"><br>
-      <input type="button" id="b2" value="Update Note" onclick="updateNote();"><br>
-      <input type="button" id="b3" value="Delete Note" onclick="deleteNote();"><br>
-      <input type="button" id="b4" value="Delete All Cookies" onclick="deleteAllCookies();"><br>
-      <input type="button" id="b5" value="Show All Cookies" onclick="showAllCookies();"><br>
-      <input type="button" id="b6" value="Test" onclick="test();"><br>
-    </div>
+  
+    <div id="buttonsDiv"></div>
     
-    <hr>
+    <div id="output01"></div>
     
-    <div id="outDiv01"></div>
-
+    
     <script>
-        initN();
+    
+      init(); 
+    
     </script>
+    
     
   </body>
 </html>
