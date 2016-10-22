@@ -1,0 +1,91 @@
+body {
+  font: 16px "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#wrapperDiv {
+  width: 100%;
+  height: auto;
+}
+
+#allButtonsDiv {
+  margin-left: 35px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.controlBtns {
+  font-size: 14px;
+  color: white;
+  background-color: black;
+  margin-right: 16px;
+  width: 70px;
+  height: 25px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#newBtn {
+  margin-right: 64px;
+}
+
+#updateBtn {
+  visibility: hidden;
+}
+
+#delBtn {
+  visibility: hidden;
+}
+
+#allNotesDiv {
+  width: 100%;
+}
+
+.noteDiv {
+  margin-bottom: 25px;
+}
+
+.checkBoxDiv {
+  width: 35px;
+  float: left;
+}
+
+.noteText {
+  margin-left: 35px;
+}
+
+.noteText:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.noteTextSelected {
+  text-decoration: underline;
+}
+
+
+
+
+/* css for menu button */
+
+.menu {
+  cursor: pointer;
+  float: right;
+  margin-right: 35px;
+}
+
+.square {
+  width: 25px;
+  background: black;
+  padding: 2px;
+}
+
+.line {
+  width: 19px;
+  height: 3px;
+  background: white;
+  margin: 3px;
+}
+
+/* ------------------- */
