@@ -12,48 +12,11 @@
         showAllCookies();
       }
         
-      function createNote() {
-        var noteText = prompt("enter text");
-        if(noteText === '') {
-          noteText = 'null';
-        }
-        var noteCount = getCookieValue('noteCount');
-        if(noteCount === '') {
-          noteCount = 1;
-          setCookie('noteCount', noteCount);
-          setCookie('note' + noteCount, noteText);
-        } else {
-          noteCount = parseInt(noteCount) + 1;     
-          setCookie('noteCount', noteCount);
-          setCookie('note' + noteCount, noteText);
-        }
-      }
-        
-      function updateNote() {
-        var noteId = prompt("enter note id");        
-        var text = getCookieValue('note' + noteId);
-        if(text === '' || text === 'null') {
-          alert('Nothing found with id: ' + noteId);
-          return;
-        }
-        var newText = prompt('enter update', text);
-        if(newText === '') {
-          newText = 'null';
-        }
-        setCookie('note' + noteId, newText);
-      }
       
-      function deleteNote() {
-        var noteId = prompt("enter note id");
-        if(getCookieValue('note' + noteId) === '') {
-          alert('Nothing found with id: ' + noteId);
-          return;
-        }
-        var noteCount = getCookieValue('noteCount');
-        noteCount = parseInt(noteCount) - 1;
-        setCookie('noteCount', noteCount);        
-        deleteCookie('note' + noteId);
-      }
+        
+      
+      
+      
 
         
         
@@ -102,30 +65,7 @@
       }
         
         
-        
-      // --------------------------------------------
 
-  
-
-  
-      function test() {
-        var normal = 'count=2;n1=test 23;n2=aaaaa;n3=kako kada tako to uff kuff oos sad;n4= sdas asdasda sdasda ssdasdasd';
-        console.log(normal);
-        console.log(normal.length);
-        console.log(byteCount(normal));
-        var encoded = window.btoa(normal);
-        console.log(encoded);
-        console.log(encoded.length);
-        console.log(byteCount(encoded));
-        var decoded = window.atob(encoded);
-        console.log(decoded);
-        console.log(decoded.length);
-        console.log(byteCount(decoded));
-      }
-      
-      function byteCount(s) {
-        return encodeURI(s).split(/%..|./).length - 1;
-      }
       
   </script>
   </head>
@@ -147,5 +87,6 @@
     <script>
         initN();
     </script>
+    
   </body>
 </html>
