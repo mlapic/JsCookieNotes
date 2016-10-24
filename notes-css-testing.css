@@ -1,5 +1,9 @@
 body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   font: 16px "Trebuchet MS", Helvetica, sans-serif;
+  background: #ddd;
 }
 
 #wrapperDiv {
@@ -7,62 +11,47 @@ body {
   height: auto;
 }
 
-#allButtonsDiv {
-  margin-left: 35px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.controlBtns {
-  font-size: 14px;
-  color: white;
-  background-color: black;
-  margin-right: 16px;
-  width: 70px;
-  height: 25px;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#newBtn {
-  margin-right: 64px;
-}
-
-#updateBtn {
-  visibility: hidden;
-}
-
-#delBtn {
-  visibility: hidden;
-}
-
-#allNotesDiv {
+#notesWrapperDiv {
   width: 100%;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid gray;
+  -moz-box-shadow: 6px 6px 8px #333;
+  -webkit-box-shadow: 6px 6px 8px #333;
+  box-shadow: 6px 6px 8px #333;
 }
 
-.noteDiv {
-  margin-bottom: 25px;
+.note {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid gray;
 }
 
-.checkBoxDiv {
-  width: 35px;
-  float: left;
-}
 
-.noteText {
-  margin-left: 35px;
-}
 
-.noteText:hover {
+
+
+.circle {
+	width: 100px;
+	height: 100px;
+	background: #ffaa00;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+  -webkit-box-shadow: 6px 6px 8px #333;
+  -moz-box-shadow: 6px 6px 8px #333;
+  box-shadow: 6px 6px 8px #333;
+  position: fixed;
+  bottom: 16px; 
+  right: 16px;
   cursor: pointer;
-  text-decoration: underline;
 }
 
-.noteTextSelected {
-  text-decoration: underline;
-}
+.cross { background: white; height: 32px; width: 6px; position: relative; top: 34px; left: 47px; } 
+.cross:after { background: white; content: ""; height: 6px; width: 32px; position: absolute; top: 13px; left: -13px; }
+
+
 
 
 
