@@ -9,6 +9,16 @@
       // document.getElementById(id).className += " noteTextSelected";
       // document.getElementById("updateBtn").style.visibility = "visible"; "hidden"
       
+      /* Open when someone clicks on the span element */
+      function openNav() {
+          document.getElementById("myNav").style.height = "100%";
+      }
+
+      /* Close when someone clicks on the "x" symbol inside the overlay */
+      function closeNav() {
+          document.getElementById("myNav").style.height = "0%";
+      }
+      
     </script>
   </head>
   <body>
@@ -19,7 +29,7 @@
 
 
 
-<div class="circle" onClick="alert('new!');">
+<div class="circle" onClick="openNav();">
   <div class="cross"></div>
 </div>
   
@@ -72,6 +82,18 @@
       </div>
     
     </div>
+    
+    <div id="myNav" class="overlay">
+    
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        Tu ide nešto...
+      </div>
+
+    </div>
+
     
     
   </body>
