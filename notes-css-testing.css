@@ -103,13 +103,22 @@ body {
 .overlay-content {
     position: relative;
     top: 25%; /* 25% from the top */
-    width: 100%; /* 100% width */
+    width: 40%; /* 100% width */
     text-align: center; /* Centered text/links */
     margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
-    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    background: white;
 }
 
-
+#newNoteTextArea {
+  width: 80%;
+  border: 0;
+  font: 14px "Trebuchet MS", Helvetica, sans-serif;
+  resize: none;
+  overflow: hidden;
+}
 
 /* Position the close button (top right corner) */
 .overlay .closebtn {

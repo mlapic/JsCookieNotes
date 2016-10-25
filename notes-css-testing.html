@@ -12,6 +12,7 @@
       /* Open when someone clicks on the span element */
       function openNav() {
           document.getElementById("myNav").style.height = "100%";
+          document.getElementById("newNoteTextArea").focus();
       }
 
       /* Close when someone clicks on the "x" symbol inside the overlay */
@@ -19,9 +20,13 @@
           document.getElementById("myNav").style.height = "0%";
       }
       
+      function init() {
+        document.getElementById("newNoteTextArea").value = '';
+      }
+      
     </script>
   </head>
-  <body>
+  <body onLoad="init();">
   
   
 
@@ -89,7 +94,8 @@
 
       <!-- Overlay content -->
       <div class="overlay-content">
-        Tu ide nešto...
+        Add new note<br>
+        <textarea placeholder="Tu ide nešto..." id="newNoteTextArea"></textarea>
       </div>
 
     </div>
