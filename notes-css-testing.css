@@ -104,26 +104,37 @@ body {
     position: relative;
     top: 25%; /* 25% from the top */
     width: 100%; /* 100% width */
-    text-align: left; /* Centered text/links */
     margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
     
+.overlay-content-background {
     color: black;
     background: white;
+    margin: 0 10px;
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
+    border-radius: 0.2em;
+    text-align: left;
 }
 
 .overlay-content-title {
-  padding-bottom: 8px;
-  margin-bottom: 14px;
+  padding: 0.5em;
+  margin-bottom: 1em;
   border-bottom: 1px solid gray;
   font-size: 1em;
+  height: 1em;
+	transition-property: height;
+	transition-duration: 3s;
 }
 
 #newNoteTextArea {
-  width: 85%;
-  border: 0;
+  width: 95%;
+  height: 5em;
+  margin-left: 2em;
+  border: none;
   font: 1em "Trebuchet MS", Helvetica, sans-serif;
   resize: none;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 /* Position the close button (top right corner) */

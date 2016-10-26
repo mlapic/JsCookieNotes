@@ -27,6 +27,11 @@
         document.getElementById("newNoteTextArea").value = '';
       }
       
+      function textAreaTitle() {
+        document.getElementById("textAreaTitleDiv").innerHTML = 'Add new note';
+        document.getElementById("newNoteTextArea").placeholder = '';
+      }
+      
     </script>
   </head>
   <body onLoad="init();">
@@ -97,8 +102,10 @@
 
       <!-- Overlay content -->
       <div class="overlay-content">
-        <div class="overlay-content-title">Add new note</div>
-        <textarea placeholder="Tu ide nešto..." id="newNoteTextArea"></textarea>
+        <div class="overlay-content-background">
+          <div class="overlay-content-title" id="textAreaTitleDiv"></div>
+          <textarea placeholder="Add new note" id="newNoteTextArea" onClick="textAreaTitle();"></textarea>
+        </div>
       </div>
 
     </div>
