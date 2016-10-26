@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset=UTF-8 />
+    <meta name='viewport' content='width=device-width' >
+    <meta charset='UTF-8' />
     <title>CSS TEST</title>
     <link rel="stylesheet" type="text/css" href="notes-css-testing.css" />
     <script>
@@ -12,12 +13,14 @@
       /* Open when someone clicks on the span element */
       function openNav() {
           document.getElementById("myNav").style.height = "100%";
-          document.getElementById("newNoteTextArea").focus();
+          //document.getElementById("newNoteTextArea").focus();
+          document.getElementById("circle").style.visibility = "hidden";
       }
 
       /* Close when someone clicks on the "x" symbol inside the overlay */
       function closeNav() {
           document.getElementById("myNav").style.height = "0%";
+          document.getElementById("circle").style.visibility = "visible";
       }
       
       function init() {
@@ -34,7 +37,7 @@
 
 
 
-<div class="circle" onClick="openNav();">
+<div class="circle" id="circle" onClick="openNav();">
   <div class="cross"></div>
 </div>
   
@@ -94,13 +97,11 @@
 
       <!-- Overlay content -->
       <div class="overlay-content">
-        Add new note<br>
+        <div class="overlay-content-title">Add new note</div>
         <textarea placeholder="Tu ide nešto..." id="newNoteTextArea"></textarea>
       </div>
 
     </div>
-
-    
     
   </body>
 </html>
