@@ -4,23 +4,24 @@
     <meta name='viewport' content='width=device-width' >
     <meta charset='UTF-8' />
     <title>CSS TEST</title>
-    <link rel="stylesheet" type="text/css" href="notes-css-testing.css" />
+    <link rel="stylesheet" type="text/css" href="notes-css-testing.css">
     <script>
     
       // document.getElementById(id).className += " noteTextSelected";
       // document.getElementById("updateBtn").style.visibility = "visible"; "hidden"
       
-      /* Open when someone clicks on the span element */
-      function openNav() {
-          document.getElementById("myNav").style.height = "100%";
-          //document.getElementById("newNoteTextArea").focus();
-          document.getElementById("circle").style.visibility = "hidden";
+      function openNav(navId, elemToFocusOn) {
+          document.getElementById(navId).style.height = "100%";
+          //document.getElementById(elemToFocusOn).focus();
+          document.getElementById('circle1').style.visibility = "hidden";
+          document.getElementById('circle2').style.visibility = "hidden";
       }
 
       /* Close when someone clicks on the "x" symbol inside the overlay */
-      function closeNav() {
-          document.getElementById("myNav").style.height = "0%";
-          document.getElementById("circle").style.visibility = "visible";
+      function closeNav(navId) {
+          document.getElementById(navId).style.height = "0%";
+          document.getElementById('circle1').style.visibility = "visible";
+          document.getElementById('circle2').style.visibility = "visible";
       }
       
       function init() {
@@ -31,7 +32,7 @@
         document.getElementById("textAreaTitleDiv").innerHTML = 'Add new note';
         document.getElementById("newNoteTextArea").placeholder = '';
       }
-      
+
     </script>
   </head>
   <body onLoad="init();">
@@ -42,21 +43,18 @@
 
 
 
-<div class="circle" id="circle" onClick="openNav();">
+<div class="circle" id="circle1" onClick="openNav('myNav1', 'newNoteTextArea');">
+  <div class="cross"></div>
+</div>
+
+<div class="circle" id="circle2" onClick="openNav('myNav2', 'editDiv');">
   <div class="cross"></div>
 </div>
   
+  
+  
+  
     <div id="wrapperDiv">
-        
-      <!--<div class="menu">
-        <div class="square">
-          <div class="line line1"></div>
-          <div class="line line2"></div>
-          <div class="line line3"></div>
-        </div>
-      </div>-->
-      
-      
 
       <div id="notesWrapperDiv">
       
@@ -96,19 +94,36 @@
     
     </div>
     
-    <div id="myNav" class="overlay">
     
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-      <!-- Overlay content -->
+    <!-- Add new note - TEXTAREA -->
+    <div id="myNav1" class="overlay">
       <div class="overlay-content">
         <div class="overlay-content-background">
           <div class="overlay-content-title" id="textAreaTitleDiv"></div>
           <textarea placeholder="Add new note" id="newNoteTextArea" onClick="textAreaTitle();"></textarea>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav('myNav1')">&times;</a>
+          <a href="javascript:void(0)" onclick="closeNav('myNav1')"><div class="checkmark"></div></a>
         </div>
       </div>
-
     </div>
+    <!-- ----------------------- -->
+    
+    
+    <!-- Add new note - EDITABLE DIV -->
+    <div id="myNav2" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav('myNav2')">&times;</a>
+      <div class="overlay-content">
+        <div class="overlay-content-background">
+          <div class="overlay-content-title">Add new note</div> 
+          <div contenteditable id="editDiv">
+            Tu ide nešto...
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- --------------------------- -->
+
+
     
   </body>
 </html>

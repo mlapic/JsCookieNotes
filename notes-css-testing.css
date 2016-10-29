@@ -48,102 +48,85 @@ body {
   cursor: pointer;
 }
 
+#circle2 { right: 148px; background: #ff2200;}
+
 .cross { background: white; height: 32px; width: 6px; position: relative; top: 34px; left: 47px; } 
 .cross:after { background: white; content: ""; height: 6px; width: 32px; position: absolute; top: 13px; left: -13px; }
 
 
 
 
-
-
-/* css for menu button */
-
-.menu {
-  cursor: pointer;
-  float: right;
-  margin-right: 35px;
-}
-
-.square {
-  width: 25px;
-  background: black;
-  padding: 2px;
-}
-
-.line {
-  width: 19px;
-  height: 3px;
-  background: white;
-  margin: 3px;
-}
-
-/* ------------------- */
-
-
-
-
-
  /* The Overlay (background) */
  
-.overlay {
-    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+.overlay { 
     height: 0;
     width: 100%;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    background-color: rgb(0,0,0); /* Black fallback color */
-    background-color: rgba(0,0,0, 0.7); /* Black w/opacity */
-    overflow-y: hidden; /* Disable horizontal scroll */
-    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.7);
+    overflow-y: hidden;
+    transition: 0.5s;
 }
 
-/* Position the content inside the overlay */
 .overlay-content {
     position: relative;
-    top: 25%; /* 25% from the top */
-    width: 100%; /* 100% width */
-    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    top: 25%;
+    width: 100%;
+    height: 50%;
+    /*margin-top: 30px;*/
 }
     
 .overlay-content-background {
     color: black;
     background: white;
-    margin: 0 10px;
+    margin: 0 1em;
     -webkit-border-radius: 0.2em;
     -moz-border-radius: 0.2em;
     border-radius: 0.2em;
     text-align: left;
+    
+    position: relative;
+    padding: 0 1em;
 }
 
 .overlay-content-title {
-  padding: 0.5em;
+  padding-top: 0.5em;
   margin-bottom: 1em;
-  border-bottom: 1px solid gray;
+  /*border-bottom: 1px solid gray;*/
   font-size: 1em;
   height: 1em;
-	transition-property: height;
-	transition-duration: 3s;
 }
 
 #newNoteTextArea {
-  width: 95%;
-  height: 5em;
-  margin-left: 2em;
+  width: 100%;
+  margin: 0; padding: 0;
+  height: 50%;
+  /*margin: 0 2em 2em 2em;*/
+  margin-bottom: 2em;
   border: none;
   font: 1em "Trebuchet MS", Helvetica, sans-serif;
   resize: none;
   /*overflow: hidden;*/
 }
 
-/* Position the close button (top right corner) */
+#editDiv {
+  width: auto;
+  height: auto;
+  /*border: 1px solid gray;*/
+  background: white;
+  padding: 0 10px 10px 10px;
+}
+
+
 .overlay .closebtn {
-    position: absolute;
-    top: 0.3em;
-    right: 0.8em;
+    /*position: absolute;*/
+    /*top: 0.3em;*/
+    /*right: 0.8em;*/
     font-size: 2.5em;
-    color: white;
+    color: black;
 }
 
 .overlay a {
@@ -162,3 +145,24 @@ body {
 
 /* ------------------- */
 
+
+.checkmark {
+  
+  display: inline-block;
+  
+  width: 0.5em;
+  height: 1em;
+ 
+  border: solid black;
+  border-width: 0 0.2em 0.2em 0;
+  
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  
+  /*margin-bottom: 0.3em;*/
+  
+ 
+  /*float: right;*/
+}
