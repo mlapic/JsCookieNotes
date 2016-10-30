@@ -86,6 +86,7 @@ function saveAll() {
 	
   if(allNotes.length == 0) {
 		out('nothing to save');
+    deleteAllCookies();
 		return;
 	}
   
