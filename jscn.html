@@ -22,67 +22,16 @@
     <!-- <link href="assets/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:801px)"> -->
     
     <script src="jscn.js"></script>
-    
-    <script>
 
-      function openOverlay() {
-          document.getElementById('overlay').style.height = "100%";
-          document.getElementById('circle').style.visibility = "hidden";
-      }
-
-      function closeOverlay() {
-          document.getElementById('overlay').style.height = "0%";
-          document.getElementById('circle').style.visibility = "visible";
-      }
-      
-      function cancelAddNewNote() { 
-        closeOverlay();
-        out('cancel');
-      }
-      
-      function addNewNote() {
-        closeOverlay();
-        var note = document.getElementById("newNoteTextArea").value;
-        out('--'+note+'--');
-        addNew();
-      }
-      
-      function deleteNote() {
-        closeOverlay();
-        out('delete');
-      }
-      
-      
-
-      function newNoteButtonClick() {
-        openOverlay();
-        document.getElementById("newNoteTextArea").value = '';
-      }
-      
-      function update(noteId) {
-        //console.log(noteId);
-        //console.log(document.getElementById(noteId).innerHTML);
-        out(noteId);
-        openOverlay();
-        document.getElementById('newNoteTextArea').value = document.getElementById(noteId).innerHTML;
-      }
-      
-      
-      
-      function init() {
-        document.getElementById("newNoteTextArea").value = '';
-      }
-      
-      
-    </script>
   </head>
-  <body onLoad="init();">
+  
+  <body onLoad="initJscnPage();">
   
     <div id="wrapperDiv">
 
       <div id="notesWrapperDiv">
       
-        <div class="note" id="noteId0" onclick="update('noteId0');">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero. <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero.</div>
+        <!--<div class="note" id="noteId0" onclick="update('noteId0');">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero. <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis quam, placerat at viverra eu, dignissim sit amet nunc. Suspendisse risus mi, dictum eu rhoncus vitae, pharetra sed libero.</div>
         
         <div class="note">
           Aenean varius sem non laoreet efficitur. Aliquam pharetra laoreet tincidunt.
@@ -110,8 +59,12 @@
         
         <div class="note">
           Maecenas ipsum tellus, maximus in gravida vel, pretium eu mauris. Fusce finibus bibendum dui, quis congue neque interdum eget.
-        </div>
+        </div>-->
         
+      </div>
+
+      <div>
+        <button onclick="showAllCookies();">All cookies</button> <button onclikc="deleteAllCookies(;">Delete all cookies</button>        
       </div>
       
     </div> <!-- END wrapperDiv -->
@@ -124,15 +77,15 @@
           <div class="overlay-controls">
             
             <div class="closeBtnWrapperDiv">
-              <div class="closebtn" onclick="cancelAddNewNote();">&times;</div>
+              <div class="closebtn" onclick="closeOverlayButtonClick();">&times;</div>
             </div>
             
-            <div class="checkmarkWrapperDiv" onclick="addNewNote();">
+            <div class="checkmarkWrapperDiv" onclick="addNewNoteButtonClick();">
               <div class="checkmark"></div>
             </div>
             
             <div class="deleteIconWrapperDiv">
-              <i class="material-icons deleteIcon" onclick="deleteNote();">delete</i>
+              <i class="material-icons deleteIcon" onclick="deleteNoteButtonClick();">delete</i>
             </div>                     
             
           </div>                   

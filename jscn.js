@@ -6,6 +6,8 @@ var cookieExpirationDel = "; expires=Thu, 01 Jan 1970 00:00:01 GMT";
 
 var allNotes = [];
 
+var noteSelected = ''; //
+
 function printAll() {
   var nWrap = document.getElementById('notesWrapperDiv');
   var allNotesHTML = '';
@@ -182,3 +184,56 @@ function out(msg) {
     console.log(msg)
   }
 }
+
+
+
+
+// ---------- Page Controls ----------
+
+
+function openOverlay() {
+		document.getElementById('overlay').style.height = "100%";
+		document.getElementById('circle').style.visibility = "hidden";
+}
+
+function closeOverlay() {
+		document.getElementById('overlay').style.height = "0%";
+		document.getElementById('circle').style.visibility = "visible";
+}
+
+
+function initJscnPage() {
+	// add saved notes to web page
+}
+
+function newNoteButtonClick() {
+	openOverlay();
+	document.getElementById("newNoteTextArea").value = '';
+}
+
+function closeOverlayButtonClick() { 
+	closeOverlay();
+	out('cancel');
+}
+
+function addNewNoteButtonClick() {
+	closeOverlay();
+	var note = document.getElementById("newNoteTextArea").value;
+	out('--'+note+'--');
+
+}
+
+function deleteNoteButtonClick() {
+	closeOverlay();
+	out('delete');
+}
+
+function update(noteId) {
+	out(noteId);
+	openOverlay();
+	document.getElementById('newNoteTextArea').value = document.getElementById(noteId).innerHTML;
+	noteSelected = noteId;
+}
+
+
+
