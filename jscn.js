@@ -1,125 +1,124 @@
 
-var debug = true;
+var debug = false;
 
 var cookieExpirationAdd = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 var cookieExpirationDel = "; expires=Thu, 01 Jan 1970 00:00:01 GMT";
 
 var allNotes = [];
 
-var noteSelected = ''; //
+var noteSelected = '';
+
+
+// ---------- DEBUG ----------
+
+function out(msg) {
+  if(debug) {
+    console.log(msg)
+  }
+}
+
+
+// ---------- Page Controls ----------
+
+function initJscnPage() {
+	if(!debug) {
+		document.getElementById('debugControlsDiv').style.display = 'none';
+	}
+	restoreAll();
+	printAll();
+}
+
+function openOverlay() {
+		document.getElementById('overlay').style.height = "100%";
+		document.getElementById('circle').style.visibility = "hidden";
+}
+
+function closeOverlay() {
+		document.getElementById('overlay').style.height = "0%";
+		document.getElementById('circle').style.visibility = "visible";
+}
+
+function newNoteButtonClick() {
+	openOverlay();
+	document.getElementById("newNoteTextArea").value = '';
+}
+
+function closeOverlayButtonClick() { 
+	closeOverlay();
+	noteSelected = '';
+}
+
+function addNewNoteButtonClick() {
+	closeOverlay();
+	if(noteSelected != '') {
+		allNotes[noteSelected] = document.getElementById("newNoteTextArea").value;
+	} else {
+		allNotes.push(document.getElementById("newNoteTextArea").value);
+	}
+	noteSelected = '';
+	printAll();
+	saveAll();
+}
+
+function deleteNoteButtonClick() {
+	closeOverlay();
+	if(noteSelected != '') {
+		allNotes.splice(noteSelected, 1);
+	}
+	noteSelected = '';
+	printAll();
+	saveAll();
+}
+
+function selectNote(noteId) {
+	openOverlay();
+	document.getElementById('newNoteTextArea').value = document.getElementById(noteId).innerHTML;
+	noteSelected = noteId.substring('noteId'.length, noteId.length);
+}
 
 function printAll() {
   var nWrap = document.getElementById('notesWrapperDiv');
   var allNotesHTML = '';
-  
   for(var i = 0; i < allNotes.length; i++) {
-    out('[' + i + '] ' + allNotes[i]);
-    allNotesHTML += '<div class="note" id="noteId' + i + '" onclick="update(\'noteId' + i + '\');">';
+    allNotesHTML += '<div class="note" id="noteId' + i + '" onclick="selectNote(\'noteId' + i + '\');">';
     allNotesHTML += allNotes[i] + '</div>';
   }
-  
   nWrap.innerHTML = allNotesHTML;
+	nWrap.style.display = 'block';
+	if(allNotes.length == 0) {
+		nWrap.style.display = 'none';
+	}
   allNotesHTML = '';
 }
 
-function addNew() {
-  var note = document.getElementById("newNoteTextArea").value;
-  if(note == '') {
-		out('cancel');
-		return;
-	}
-  allNotes.push(note);
-  printAll();
-  //saveAll();
-}
 
-function removeOne() {
-	if(allNotes.length == 0) {
-		out('nothing to remove');
-		return;
-	}
-	var index = prompt('Index to remove (0-' + (allNotes.length - 1) + '):');
-	out(index);
-	if(index == null) {
-		out('cancel');
-		return;
-	}
-	if(index == '') {
-		out('input empty');
-		return;
-	}
-	if(isNaN(index)) {		
-		out('not a number');
-		return;
-	}
-	if(index < 0 || index >= allNotes.length) {
-		out('out of range');
-		return;
-	}
-	out('ok, removing index: ' + index);
-	allNotes.splice(index, 1);
-  saveAll();
-}
 
-function updateOne() {
-	if(allNotes.length == 0) {
-		out('nothing to update');
-		return;
-	}
-	var index = prompt('Index to update (0-' + (allNotes.length - 1) + '):');
-	out(index);
-	if(index == null) {
-		out('cancel');
-		return;
-	}
-	if(index == '') {
-		out('input empty');
-		return;
-	}
-	if(isNaN(index)) {		
-		out('not a number');
-		return;
-	}
-	if(index < 0 || index >= allNotes.length) {
-		out('out of range');
-		return;
-	}
-  
-  var updateNote = prompt('Update', allNotes[index]);
-  
-  if(updateNote == null) {
-		out('update cancel');
-		return;
-	}
-	
-  allNotes[index] = updateNote;
-  saveAll();
-}
+
+
+
+
+// save all notes in allNotes array in a cookie
 
 function saveAll() { 
-	
   if(allNotes.length == 0) {
-		out('nothing to save');
     deleteAllCookies();
 		return;
 	}
-  
-  out('-- save:');
   var allNotesTemp = allNotes.slice();
 	for(var i = 0; i < allNotesTemp.length; i++) {
   	allNotesTemp[i] = encodeURIComponent(allNotesTemp[i]);
   }
   var saveString = btoa(allNotesTemp.toString());
   allNotesTemp = null;
-  out(saveString + '[' + saveString.length + ']');
-  
   setCookie('jscn', saveString);
 }
+
+
+// restore all notes from cookie to allNotes array
 
 function restoreAll() {
   var saveString = getCookieValue('jscn');
   if(saveString.length == 0) {
-    out('nothing to restore');
     return;
   }
 	allNotes = atob(saveString).split(',');
@@ -127,8 +126,6 @@ function restoreAll() {
   	allNotes[i] = decodeURIComponent(allNotes[i]);
   }
 }
-
-
 
 
 // ------------- Cookie functions -------------
@@ -162,7 +159,6 @@ function deleteAllCookies() {
   }
 }
 
-
 function showAllCookies() {
   if(document.cookie != '') {
     out(document.cookie + ' [' + document.cookie.length + ']');
@@ -170,70 +166,3 @@ function showAllCookies() {
     out('nothing');
   }          
 }
-
-
-
-
-
-
-
-// ---------- DEBUG ----------
-
-function out(msg) {
-  if(debug) {
-    console.log(msg)
-  }
-}
-
-
-
-
-// ---------- Page Controls ----------
-
-
-function openOverlay() {
-		document.getElementById('overlay').style.height = "100%";
-		document.getElementById('circle').style.visibility = "hidden";
-}
-
-function closeOverlay() {
-		document.getElementById('overlay').style.height = "0%";
-		document.getElementById('circle').style.visibility = "visible";
-}
-
-
-function initJscnPage() {
-	// add saved notes to web page
-}
-
-function newNoteButtonClick() {
-	openOverlay();
-	document.getElementById("newNoteTextArea").value = '';
-}
-
-function closeOverlayButtonClick() { 
-	closeOverlay();
-	out('cancel');
-}
-
-function addNewNoteButtonClick() {
-	closeOverlay();
-	var note = document.getElementById("newNoteTextArea").value;
-	out('--'+note+'--');
-
-}
-
-function deleteNoteButtonClick() {
-	closeOverlay();
-	out('delete');
-}
-
-function update(noteId) {
-	out(noteId);
-	openOverlay();
-	document.getElementById('newNoteTextArea').value = document.getElementById(noteId).innerHTML;
-	noteSelected = noteId;
-}
-
-
-
