@@ -1,78 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
   
-    <!-- <meta name="HandheldFriendly" content="true" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" /> -->
-    
-    <meta name='viewport' content='width=device-width' >
-    <meta charset='UTF-8' />
-    <title>JS Cookie Notes</title>
-    <link rel="stylesheet" type="text/css" href="jscn.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- smart phone css  -->
-    <!-- <link href="assets/phone.css" rel="stylesheet" type="text/css" media="all and (min-width: 0px) and (max-width: 480px)" /> -->
-
-    <!-- Tablet -->
-    <!-- <link href="assets/tablet.css" rel="stylesheet" type="text/css" media="all and (min-width: 481px) and (max-width: 800px)" /> -->
-
-    <!-- Desktop -->
-    <!-- <link href="assets/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:801px)"> -->
-    
-    <script src="jscn.js"></script>
-
-  </head>
+  <!-- 
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" />
+  -->
   
-  <body onLoad="initJscnPage();">
+  <meta name='viewport' content='width=device-width' >
+  <meta charset='UTF-8' />
+  <title>JS Cookie Notes</title>
+  <link rel="stylesheet" type="text/css" href="jscn.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+  <!-- smart phone css  -->
+  <!-- 
+  <link href="assets/phone.css" rel="stylesheet" type="text/css" media="all and (min-width: 0px) and (max-width: 480px)" />
+  -->
+
+  <!-- Tablet -->
+  <!-- 
+  <link href="assets/tablet.css" rel="stylesheet" type="text/css" media="all and (min-width: 481px) and (max-width: 800px)" /> 
+  -->
+
+  <!-- Desktop -->
+  <!-- 
+  <link href="assets/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:801px)"> 
+  -->
+
+  <script src="jscn.js"></script>
+</head>
   
-    <div id="wrapperDiv">
-
-      <div id="notesWrapperDiv">
-
-
-
-      </div>
-
-      
-      
-    </div> <!-- END wrapperDiv -->
-
-    <div id="debugControlsDiv">
-      <button onclick="showAllCookies();">All cookies</button> <button onclick="deleteAllCookies();">Delete all cookies</button>        
+<body onLoad="initJscnPage();">
+  <div id="wrapperDiv">
+    <div id="notesWrapperDiv">
     </div>
+  </div> 
 
-    <!-- Add new note - TEXTAREA -->
-    <div id="overlay" class="overlay">
-      <div class="overlay-content">
-        <div class="overlay-content-background">
-          <textarea placeholder="Add new note" id="newNoteTextArea"></textarea>
-          <div class="overlay-controls">
-            
-            <div class="closeBtnWrapperDiv">
+  <div id="debugControlsDiv">
+    <button onclick="showAllCookies();">All cookies</button> <button onclick="deleteAllCookies();">Delete all cookies</button>        
+  </div>
+
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <div class="overlay-content-background">
+        <textarea placeholder="Add new note" id="newNoteTextArea"></textarea>
+        <div class="overlay-controls">
+          <div class="closeBtnWrapperDiv">
               <div class="closebtn" onclick="closeOverlayButtonClick();">&times;</div>
-            </div>
+          </div>
             
-            <div class="checkmarkWrapperDiv" onclick="addNewNoteButtonClick();">
-              <div class="checkmark"></div>
-            </div>
+          <div class="checkmarkWrapperDiv" onclick="addNewNoteButtonClick();">
+            <div class="checkmark"></div>
+          </div>
             
-            <div class="deleteIconWrapperDiv">
-              <i class="material-icons deleteIcon" onclick="deleteNoteButtonClick();">delete</i>
-            </div>                     
+          <div class="deleteIconWrapperDiv">
+            <i class="material-icons deleteIcon" onclick="deleteNoteButtonClick();">delete</i>
+          </div>                     
             
-          </div>                   
-        </div>
+        </div>                   
       </div>
     </div>
-    <!-- ----------------------- -->
+  </div>
 
-    <!-- Add new note button -->    
-    <div class="circle" id="circle" onClick="newNoteButtonClick();">
-      <div class="cross"></div>
-    </div>
-    <!-- ------------------- -->
+  <!-- Add new note button -->    
+  <div class="circle" id="circle" onClick="newNoteButtonClick();">
+    <div class="cross"></div>
+  </div>
 
-  </body>
+</body>
 </html>
