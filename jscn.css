@@ -127,12 +127,12 @@ body {
 
 
 .circle {
-	width: 100px;
-	height: 100px;
-	background: #ffaa00;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  background: #ffaa00;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
   -webkit-box-shadow: 6px 6px 8px #333;
   -moz-box-shadow: 6px 6px 8px #333;
   box-shadow: 6px 6px 8px #333;
@@ -142,7 +142,7 @@ body {
   cursor: pointer;
 }
 
-.cross { đ
+.cross {
   background: white; 
   height: 32px; 
   width: 6px; 
