@@ -11,9 +11,9 @@ body {
   margin-bottom: 2em;
   display: inline-block;
   border-bottom: 2px solid gray;
-  -moz-box-shadow: 6px 6px 6px #333;
+  /*-moz-box-shadow: 6px 6px 6px #333;
   -webkit-box-shadow: 6px 6px 6px #333;
-  box-shadow: 6px 6px 6px #333;
+  box-shadow: 6px 6px 6px #333;*/
   width: 100%;
   display: none;
 }
@@ -133,9 +133,9 @@ body {
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
-  -webkit-box-shadow: 6px 6px 8px #333;
+  /*-webkit-box-shadow: 6px 6px 8px #333;
   -moz-box-shadow: 6px 6px 8px #333;
-  box-shadow: 6px 6px 8px #333;
+  box-shadow: 6px 6px 8px #333;*/
   position: fixed;
   bottom: 16px; 
   right: 16px;
@@ -148,7 +148,7 @@ body {
   width: 3px; 
   position: relative; 
   top: 17px; 
-  left: 22px; 
+  left: 23px; 
 } 
 
 .cross:after { 
@@ -157,8 +157,8 @@ body {
   height: 3px; 
   width: 16px; 
   position: absolute; 
-  top: 13px; 
-  left: -13px; 
+  top: 7px; 
+  left: -7px; 
 }
 
 
