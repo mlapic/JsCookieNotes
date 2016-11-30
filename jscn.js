@@ -26,6 +26,7 @@ function initJscnPage() {
 	}
 	restoreAll();
 	printAll();
+  setCrossInCircle();  
 }
 
 function openOverlay() {
@@ -166,3 +167,24 @@ function showAllCookies() {
     out('nothing');
   }          
 }
+
+
+// ------------- circle  -------------
+
+function setCrossInCircle() {
+  var width = document.getElementById('circle').offsetWidth;
+  var height = document.getElementById('circle').offsetHeight;
+  out(width);
+  out(height);
+  var crossShortSide = document.getElementById('cross').offsetWidth;
+  var crossLongSide = document.getElementById('cross').offsetHeight;
+  out(crossShortSide);
+  out(crossLongSide);
+  var x = (width - crossShortSide) / 2;
+  var y = (height - crossLongSide) / 2;
+  out(x);
+  out(y);
+  document.getElementById('cross').style.left = x + 'px';
+  document.getElementById('cross').style.top = y + 'px';
+}
+

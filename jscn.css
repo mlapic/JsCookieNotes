@@ -145,20 +145,20 @@ body {
 .cross {
   background: white; 
   height: 16px; 
-  width: 3px; 
+  width: 4px; 
   position: relative; 
-  top: 17px; 
-  left: 23px; 
+  /*top: 0px; 
+  left: 25px; */
 } 
 
 .cross:after { 
   background: white; 
   content: ""; 
-  height: 3px; 
+  height: 4px; 
   width: 16px; 
   position: absolute; 
-  top: 7px; 
-  left: -7px; 
+  top: 6px; 
+  left: -6px;
 }
 
 
