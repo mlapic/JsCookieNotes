@@ -8,8 +8,6 @@ var allNotes = [];
 
 var noteSelected = '';
 
-var noteSelected 
-
 // ---------- DEBUG ----------
 
 function out(msg) {
@@ -50,16 +48,24 @@ function closeOverlayButtonClick() {
 	noteSelected = '';
 }
 
+// value.replace(/\r?\n/g,'<br/>')
 function addNewNoteButtonClick() {
 	closeOverlay();
+  //var value = document.getElementById("newNoteTextArea").value.replace(/\r?\n/g,'<br>');
+  var value = document.getElementById("newNoteTextArea").value;
 	if(noteSelected != '') {
-		allNotes[noteSelected] = document.getElementById("newNoteTextArea").value;
+		allNotes[noteSelected] = value;
 	} else {
-		allNotes.push(document.getElementById("newNoteTextArea").value);
+		allNotes.push(value);
 	}
 	noteSelected = '';
 	printAll();
 	saveAll();
+}
+
+function openSettings() {
+  document.getElementById('settingsOverlay').style.height = "100%";
+  document.getElementById('settingsCircle').style.visibility = "hidden";
 }
 
 function deleteNoteButtonClick() {
@@ -78,11 +84,13 @@ function selectNote(noteId) {
 	noteSelected = noteId.substring('noteId'.length, noteId.length);
 }
 
+// value.replace(/\r?\n/g,'<br/>')
 function printAll() {
   var nWrap = document.getElementById('notesWrapperDiv');
   var allNotesHTML = '';
   for(var i = 0; i < allNotes.length; i++) {
     allNotesHTML += '<div class="note" id="noteId' + i + '" onclick="selectNote(\'noteId' + i + '\');">';
+    //allNotesHTML += allNotes[i].replace(/<br>/g, '\\n') + '</div>';
     allNotesHTML += allNotes[i] + '</div>';
   }
   nWrap.innerHTML = allNotesHTML;

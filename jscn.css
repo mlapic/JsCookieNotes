@@ -7,7 +7,7 @@ body {
 }
 
 #notesWrapperDiv {
-  margin-top: 1em;
+  margin-top: 0.333em;
   margin-bottom: 2em;
   display: inline-block;
   /*border-bottom: 2px solid gray;*/
@@ -29,6 +29,9 @@ body {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
   border-radius: 0.2em;
+  word-wrap: break-word; /* IE 5.5-7 */
+  white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */ 
+  white-space: pre-wrap; /* current browsers */
 }
 
 /* The Overlay (background) */
@@ -167,6 +170,9 @@ body {
   left: -6px;
 }
 
+#settingsCircle {
+  left: 16px;
+}
 
 /* Desktop browser, min width: 1200 */
 
