@@ -8,6 +8,7 @@ var allNotes = [];
 
 var noteSelected = '';
 
+var noteSelected 
 
 // ---------- DEBUG ----------
 
