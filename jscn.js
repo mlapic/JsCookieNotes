@@ -92,7 +92,9 @@ function printAll() {
   allNotesHTML = '';
 }
 
-
+/*
+<div class="note" id="noteId1" onclick="selectNote('noteId1');"></div>
+*/
 
 
 
