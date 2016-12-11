@@ -29,34 +29,33 @@
   <link href="assets/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:801px)"> 
   -->
 
+  <script src="jquery-3.1.1.min.js"></script>
   <script src="jscn.js"></script>
+  
 </head>
   
-<body onLoad="initJscnPage();">
+<body>
+
   <div id="wrapperDiv">
-    <div id="notesWrapperDiv">
-    </div>
+    <div id="notesWrapperDiv"></div>
   </div> 
 
-  <div id="debugControlsDiv">
-    <button onclick="showAllCookies();">All cookies</button> <button onclick="deleteAllCookies();">Delete all cookies</button>        
-  </div>
-
+  <!-- Overlay for add new note -->
   <div id="overlay" class="overlay">
-    <div class="overlay-content">
-      <div class="overlay-content-background">
+    <div class="overlayContent">
+      <div class="overlayContentBackground">
         <textarea placeholder="Add new note here..." id="newNoteTextArea"></textarea>
-        <div class="overlay-controls">
+        <div class="overlayControls">
           <div class="closeBtnWrapperDiv">
-              <div class="closebtn" onclick="closeOverlayButtonClick();">&times;</div>
+              <div id="closeAddNewNoteButton" class="closebtn">&times;</div>
           </div>
             
-          <div class="checkmarkWrapperDiv" onclick="addNewNoteButtonClick();">
+          <div id="addNewNoteButton" class="checkmarkWrapperDiv">
             <div class="checkmark"></div>
           </div>
             
           <div class="deleteIconWrapperDiv">
-            <i class="material-icons deleteIcon" onclick="deleteNoteButtonClick();">delete</i>
+            <i id="deleteNoteButton" class="material-icons deleteIcon">delete</i>
           </div>                     
             
         </div>                   
@@ -64,19 +63,28 @@
     </div>
   </div>
 
+  <!-- Overlay for settings -->
   <div id="settingsOverlay" class="overlay">
-    <div class="overlay-content">
-      <p>Ovdje stavi postavke</p>      
+    <div class="overlayContent">     
+      <div class="overlayContentBackground">
+        <div id="closeSettingsButton" class="closebtn">&times;</div>
+        <p>Ovdje stavi postavke</p>
+        <div id="debugControlsDiv">
+          <button id="shAllCookiesDebugButton">Show all cookies</button>
+          <button id="delAllCookiedDebugButton">Delete all cookies</button>
+        </div>
+        
+      </div>
     </div>
   </div>
 
   <!-- Add new note button -->    
-  <div class="circle" id="circle" onClick="newNoteButtonClick();">
+  <div class="circle" id="circle">
     <div class="cross" id="cross"></div>
   </div>
 
   <!-- Open settings -->
-  <div class="circle" id="settingsCircle" onClick="openSettings();">
+  <div class="circle" id="settingsCircle">
     <div class="cross" id="settingsCross"></div>
   </div>
 

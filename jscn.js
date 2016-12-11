@@ -1,5 +1,5 @@
 
-var debug = false;
+var debug = true;
 
 var cookieExpirationAdd = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 var cookieExpirationDel = "; expires=Thu, 01 Jan 1970 00:00:01 GMT";
@@ -8,25 +8,66 @@ var allNotes = [];
 
 var noteSelected = '';
 
-// ---------- DEBUG ----------
+$(document).ready(function(){
+  
+  //if(!debug) { document.getElementById('debugControlsDiv').style.display = 'none'; }
+	restoreAll();
+	printAll();
+  setCrossInCircle();
+  
+  $('#closeAddNewNoteButton').click(function(){
+    closeOverlay();
+    noteSelected = '';
+  });
+  
+  $('#addNewNoteButton').click(function(){
+    closeOverlay();
+    var value = document.getElementById("newNoteTextArea").value;
+    if(noteSelected != '') {
+      allNotes[noteSelected] = value;
+    } else {
+      allNotes.push(value);
+    }
+    noteSelected = '';
+    printAll();
+    saveAll();
+  });
+  
+  $('#deleteNoteButton').click(function(){
+    closeOverlay();
+    if(noteSelected != '') {
+      allNotes.splice(noteSelected, 1);
+    }
+    noteSelected = '';
+    printAll();
+    saveAll();
+  });
+  
+  $('#circle').click(function(){
+    openOverlay();
+    document.getElementById("newNoteTextArea").value = '';
+  });
+  
+  $('#settingsCircle').click(function(){
+    document.getElementById('settingsOverlay').style.height = "100%";
+    document.getElementById('settingsCircle').style.visibility = "hidden";
+  });
+  
+  $('#closeSettingsButton').click(function(){
+    document.getElementById('settingsOverlay').style.height = "0%";
+    document.getElementById('settingsCircle').style.visibility = "visible";
+  });
+  
+  
+  
+  $('#shAllCookiesDebugButton').click( function(){ showAllCookies(); });
+  $('#delAllCookiedDebugButton').click( function(){ deleteAllCookies(); });
+});
 
-function out(msg) {
-  if(debug) {
-    console.log(msg)
-  }
-}
+
 
 
 // ---------- Page Controls ----------
-
-function initJscnPage() {
-	if(!debug) {
-		document.getElementById('debugControlsDiv').style.display = 'none';
-	}
-	restoreAll();
-	printAll();
-  setCrossInCircle();  
-}
 
 function openOverlay() {
 		document.getElementById('overlay').style.height = "100%";
@@ -38,59 +79,21 @@ function closeOverlay() {
 		document.getElementById('circle').style.visibility = "visible";
 }
 
-function newNoteButtonClick() {
-	openOverlay();
-	document.getElementById("newNoteTextArea").value = '';
-}
-
-function closeOverlayButtonClick() { 
-	closeOverlay();
-	noteSelected = '';
-}
-
-// value.replace(/\r?\n/g,'<br/>')
-function addNewNoteButtonClick() {
-	closeOverlay();
-  //var value = document.getElementById("newNoteTextArea").value.replace(/\r?\n/g,'<br>');
-  var value = document.getElementById("newNoteTextArea").value;
-	if(noteSelected != '') {
-		allNotes[noteSelected] = value;
-	} else {
-		allNotes.push(value);
-	}
-	noteSelected = '';
-	printAll();
-	saveAll();
-}
-
-function openSettings() {
-  document.getElementById('settingsOverlay').style.height = "100%";
-  document.getElementById('settingsCircle').style.visibility = "hidden";
-}
-
-function deleteNoteButtonClick() {
-	closeOverlay();
-	if(noteSelected != '') {
-		allNotes.splice(noteSelected, 1);
-	}
-	noteSelected = '';
-	printAll();
-	saveAll();
-}
-
 function selectNote(noteId) {
 	openOverlay();
 	document.getElementById('newNoteTextArea').value = document.getElementById(noteId).innerHTML;
 	noteSelected = noteId.substring('noteId'.length, noteId.length);
 }
 
-// value.replace(/\r?\n/g,'<br/>')
+
+
+
+// <div class="note" id="noteId1" onclick="selectNote('noteId1');"></div>
 function printAll() {
   var nWrap = document.getElementById('notesWrapperDiv');
   var allNotesHTML = '';
   for(var i = 0; i < allNotes.length; i++) {
     allNotesHTML += '<div class="note" id="noteId' + i + '" onclick="selectNote(\'noteId' + i + '\');">';
-    //allNotesHTML += allNotes[i].replace(/<br>/g, '\\n') + '</div>';
     allNotesHTML += allNotes[i] + '</div>';
   }
   nWrap.innerHTML = allNotesHTML;
@@ -101,16 +104,7 @@ function printAll() {
   allNotesHTML = '';
 }
 
-/*
-<div class="note" id="noteId1" onclick="selectNote('noteId1');"></div>
-*/
-
-
-
-
-
 // save all notes in allNotes array in a cookie
-
 function saveAll() { 
   if(allNotes.length == 0) {
     deleteAllCookies();
@@ -127,7 +121,6 @@ function saveAll() {
 
 
 // restore all notes from cookie to allNotes array
-
 function restoreAll() {
   var saveString = getCookieValue('jscn');
   if(saveString.length == 0) {
@@ -179,6 +172,14 @@ function showAllCookies() {
   }          
 }
 
+// ---------- DEBUG ----------
+
+function out(msg) {
+  if(debug) {
+    console.log(msg)
+  }
+}
+
 
 // ------------- circle  -------------
 
@@ -197,5 +198,7 @@ function setCrossInCircle() {
   out(y);
   document.getElementById('cross').style.left = x + 'px';
   document.getElementById('cross').style.top = y + 'px';
+  document.getElementById('settingsCross').style.left = x + 'px';
+  document.getElementById('settingsCross').style.top = y + 'px';
 }
 
