@@ -156,6 +156,9 @@ function getCookieValue(cName) {
 }
 
 function deleteAllCookies() {
+  var result = confirm('Delete all cookies from this web page?');
+  if(!result)
+    return;
   if(document.cookie != '') {
     var cArray = document.cookie.split(";");
     for(var i = 0; i < cArray.length; i++) {
@@ -176,7 +179,8 @@ function showAllCookies() {
 
 function out(msg) {
   if(debug) {
-    console.log(msg)
+    //console.log(msg)
+    $('#debugMessagesDiv').append(msg + '<br>')
   }
 }
 
@@ -198,7 +202,5 @@ function setCrossInCircle() {
   out(y);
   document.getElementById('cross').style.left = x + 'px';
   document.getElementById('cross').style.top = y + 'px';
-  document.getElementById('settingsCross').style.left = x + 'px';
-  document.getElementById('settingsCross').style.top = y + 'px';
 }
 
