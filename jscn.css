@@ -10,10 +10,6 @@ body {
   margin-top: 0.333em;
   margin-bottom: 2em;
   display: inline-block;
-  /*border-bottom: 2px solid gray;*/
-  /*-moz-box-shadow: 6px 6px 6px #333;
-  -webkit-box-shadow: 6px 6px 6px #333;
-  box-shadow: 6px 6px 6px #333;*/
   width: 100%;
   display: none;
 }
@@ -34,10 +30,24 @@ body {
   white-space: pre-wrap; /* current browsers */
 }
 
-/* The Overlay (background) */
+.openOverlay {
+  width: 50px;
+  height: 50px;
+  background: #ffaa00;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 1em; 
+  right: 1em;
+  cursor: pointer;
+}
+
+
+/* New Note Overlay */
  
-.overlay { 
-  height: 0;
+.overlay1 {
+  height: 0%;
   width: 100%;
   position: fixed;
   z-index: 1;
@@ -48,15 +58,9 @@ body {
   overflow-y: hidden;
   transition: 0.5s;
 }
-
-.overlayContent {
-  position: relative;
-  top: 10%;
-  width: 100%;
-  height: 70%;
-}
     
-.overlayContentBackground {
+.overlayContent1 {
+  top: 10%;
   color: black;
   background: white;
   margin: 0 1em;
@@ -79,108 +83,45 @@ body {
 }
 
 .overlayControls {
-  height: 3em;
+  height: 2em;
   margin-top: 1em;
 }
 
-.closeBtnWrapperDiv {
-  width: 33%;
-  height: 3em;
+.controlButton {
   float: left;
-}
-
-.closebtn {
-  font-size: 2.5em;
-  color: black;
-  cursor: pointer;
-  color: black;
-  width: 0.5em;
-}
-
-.checkmarkWrapperDiv {
   width: 33%;
-  height: 3em;
-  float: left;
 }
 
-.checkmark {
-  display: inline-block;
-  width: 0.5em;
-  height: 1em;
-  border: solid black;
-  border-width: 0 0.2em 0.2em 0;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  margin-top: 0.8em;
-  margin-right: 50%;
-  margin-left: 50%;
-  float: right;
-  cursor: pointer;
+.addNoteButton {
+  text-align: center;
 }
 
-.deleteIconWrapperDiv {
-  width: 33%;
-  height: 3em;
-  float: left;
-  text-align: right;
+.deleteNoteButton {
+  text-align: right;;
 }
 
-.deleteIcon {
-  cursor: pointer;
-  margin-top: 0.5em;
-}
-
-/* ------------------- */
 
 
-.circle {
-  width: 50px;
-  height: 50px;
-  background: #ffaa00;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  /*-webkit-box-shadow: 6px 6px 8px #333;
-  -moz-box-shadow: 6px 6px 8px #333;
-  box-shadow: 6px 6px 8px #333;*/
-  position: fixed;
-  bottom: 16px; 
-  right: 16px;
-  cursor: pointer;
-}
 
-.cross {
-  background: white; 
-  height: 16px; 
-  width: 4px; 
-  position: relative; 
-  /*top: 0px; 
-  left: 25px; */
-} 
 
-.cross:after { 
-  background: white; 
-  content: ""; 
-  height: 4px; 
-  width: 16px; 
-  position: absolute; 
-  top: 6px; 
-  left: -6px;
-}
 
-#settingsCircle {
+/* Settings overlay */
+
+#openSettingsOverlay {
   left: 16px;
 }
 
-#debugMessagesDiv {
-  overflow-y: scroll;
+#debugControls {
+  margin-bottom: 1em;
+}
+
+#debugMessages {
+  overflow-y: auto;
+  word-wrap: break-word;
   height: 20em;
 }
 
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
 
 
 
@@ -194,7 +135,7 @@ body {
     margin-right: auto; 
   }
 
-  .overlayContent { 
+  .overlayContent1 { 
     width: 55%; 
     margin-left: auto; 
     margin-right: auto; 

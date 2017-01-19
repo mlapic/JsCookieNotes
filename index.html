@@ -12,7 +12,12 @@
   <meta charset='UTF-8' />
   <title>JS Cookie Notes</title>
   <link rel="stylesheet" type="text/css" href="jscn.css">
+  
+  
+  <!--
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  -->
+  
     
   <!-- smart phone css  -->
   <!-- 
@@ -36,56 +41,48 @@
   
 <body>
 
-  <div id="wrapperDiv">
+  <!-- notes wrapper div -->
+  <div id="wrapperDiv">    
     <div id="notesWrapperDiv"></div>
   </div> 
 
   <!-- Overlay for add new note -->
-  <div id="overlay" class="overlay">
-    <div class="overlayContent">
-      <div class="overlayContentBackground">
-        <textarea placeholder="Add new note here..." id="newNoteTextArea"></textarea>
-        <div class="overlayControls">
-          <div class="closeBtnWrapperDiv">
-              <div id="closeAddNewNoteButton" class="closebtn">&times;</div>
-          </div>
-            
-          <div id="addNewNoteButton" class="checkmarkWrapperDiv">
-            <div class="checkmark"></div>
-          </div>
-            
-          <div class="deleteIconWrapperDiv">
-            <i id="deleteNoteButton" class="material-icons deleteIcon">delete</i>
-          </div>                     
-            
-        </div>                   
-      </div>
+  <div id="newNoteOverlay" class="overlay1">
+    <div class="overlayContent1">
+      <textarea placeholder="Add new note here..." id="newNoteTextArea"></textarea>
+      <div class="overlayControls">
+        <div id="closeNewNoteOverlay" class="closeButton controlButton">close</div>
+        <div id="addNewNote" class="addNoteButton controlButton">add</div>
+        <div id="deleteNote" class="deleteNoteButton controlButton">delete</div>
+      </div>                   
     </div>
   </div>
 
-  <!-- Overlay for settings -->
-  <div id="settingsOverlay" class="overlay">
-    <div class="overlayContent">     
-      <div class="overlayContentBackground">
-        <div id="closeSettingsButton" class="closebtn">&times;</div>
-        <div id="debugControlsDiv">
-          <button id="shAllCookiesDebugButton">Show all cookies</button>
-          <button id="delAllCookiedDebugButton">Delete all cookies</button>
-        </div>
-        <div id="debugMessagesDiv"></div>
+  <!-- Settings and debug overlay -->
+  <div id="settingsOverlay" class="overlay1">
+    <div class="overlayContent1">
+      
+      <div id="debugControls">
+        <button id="shAllCookiesDebugButton">Show all cookies</button>
+        <button id="delAllCookiesDebugButton">Delete all cookies</button>
+        <button id="clearDebugMessagesButton">Clear Debug Messages</button>
       </div>
+      
+      <div id="debugMessages"></div>
+      
+      <div class="overlayControls">
+        <div id="closeSettings" class="controlButton">Close</div>
+        <div id="saveAndCloseSettings" class="controlButton">Save</div>
+      </div>
+      
     </div>
   </div>
+  
+  <!-- Open new note overlay -->
+  <div id="openNewNoteOverlay" class="openOverlay">Add</div>
 
-  <!-- Add new note button -->    
-  <div class="circle" id="circle">
-    <div class="cross" id="cross"></div>
-  </div>
-
-  <!-- Open settings -->
-  <div class="circle" id="settingsCircle">
-    <i class="material-icons">settings</i>
-  </div>
+  <!-- Open settings overlay -->
+  <div id="openSettingsOverlay" class="openOverlay">Settings</div>
 
 </body>
 </html>
