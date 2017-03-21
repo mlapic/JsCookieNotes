@@ -44,7 +44,7 @@ $(document).ready(function(){
   });
   
   $('#openNewNoteOverlay').click(function(){
-    openOverlay();
+    openOverlay(false);
     document.getElementById("newNoteTextArea").value = '';
   });
   
@@ -66,7 +66,7 @@ $(document).ready(function(){
   
   $('#shAllCookiesDebugButton').click( function(){ showAllCookies(); });
   $('#delAllCookiesDebugButton').click( function(){ deleteAllCookies(); });
-  $('#clearDebugMessagesButton').click( function(){ $('#debugMessagesDiv').html(''); });
+  $('#clearDebugMessagesButton').click( function(){ $('#debugMessages').html(''); });
 });
 
 
@@ -74,18 +74,28 @@ $(document).ready(function(){
 
 // ---------- Page Controls ----------
 
-function openOverlay() {	
-    $( '#newNoteOverlay' ).height( '100%' );
-    $( '.openOverlay' ).hide();
+function openOverlay(showTrashButton) {
+  if(showTrashButton) {
+    $( '.controlButton' ).width( '33%' );
+    $( '.addNoteButton' ).css( 'text-align', 'center' );
+    $( '.deleteNoteButton' ).show();
+  } else {
+    $( '.controlButton' ).width( '50%' );
+    $( '.addNoteButton' ).css( 'text-align', 'right' );
+    $( '.deleteNoteButton' ).hide();
+  } 
+  $( '#newNoteOverlay' ).height( '100%' );
+  $( '.openOverlay' ).hide();
 }
 
 function closeOverlay() {
-    $( '#newNoteOverlay' ).height( '0%' );
-    $( '.openOverlay' ).show();
+  $( '#newNoteOverlay' ).height( '0%' );
+  $( '.openOverlay' ).show();
 }
 
 function selectNote(noteId) {
-	openOverlay();
+  
+	openOverlay(true);
 	document.getElementById('newNoteTextArea').value = document.getElementById(noteId).innerHTML;
 	noteSelected = noteId.substring('noteId'.length, noteId.length);
 }
@@ -185,7 +195,7 @@ function showAllCookies() {
 function out(msg) {
   if(debug) {
     //console.log(msg)
-    $('#debugMessagesDiv').append(msg + '<br>')
+    $('#debugMessages').append(msg + '<br>')
   }
 }
 

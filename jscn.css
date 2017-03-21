@@ -40,6 +40,19 @@ body {
   position: fixed;
   bottom: 1em; 
   right: 1em;
+  cursor: pointer;  
+  display: table;
+  text-align: center;
+}
+
+.openOverlay > i {
+  display: table-cell;
+  vertical-align: middle;  
+  color: #fff;
+}
+
+.my_fa_icon {
+  font-size: 1.5em;
   cursor: pointer;
 }
 
@@ -71,6 +84,8 @@ body {
   position: relative;
   padding: 0 1em;
   padding-top: 1em;
+  
+  background-color: green;
 }
 
 #newNoteTextArea {
@@ -89,15 +104,16 @@ body {
 
 .controlButton {
   float: left;
-  width: 33%;
+  width: 50%;
 }
 
 .addNoteButton {
-  text-align: center;
+  text-align: right;
 }
 
 .deleteNoteButton {
-  text-align: right;;
+  display: none;
+  text-align: right;
 }
 
 
@@ -109,6 +125,16 @@ body {
 
 #openSettingsOverlay {
   left: 16px;
+}
+
+.settingsNav {
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+#debugSection {
+  background-color: yellow;
+  margin-top: 1em;
 }
 
 #debugControls {

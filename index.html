@@ -11,14 +11,12 @@
   <meta name='viewport' content='width=device-width' >
   <meta charset='UTF-8' />
   <title>JS Cookie Notes</title>
+  
+  
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  
   <link rel="stylesheet" type="text/css" href="jscn.css">
   
-  
-  <!--
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  -->
-  
-    
   <!-- smart phone css  -->
   <!-- 
   <link href="assets/phone.css" rel="stylesheet" type="text/css" media="all and (min-width: 0px) and (max-width: 480px)" />
@@ -41,6 +39,16 @@
   
 <body>
 
+ 
+<!--  
+  <i class="fa fa-camera-retro fa-lg"></i> fa-lg
+  <i class="fa fa-camera-retro fa-2x"></i> fa-2x
+  <i class="fa fa-camera-retro fa-3x"></i> fa-3x
+  <i class="fa fa-camera-retro fa-4x"></i> fa-4x
+  <i class="fa fa-camera-retro fa-5x"></i> fa-5x
+  <i class="fa fa-camera-retro my-icon"></i>
+-->
+
   <!-- notes wrapper div -->
   <div id="wrapperDiv">    
     <div id="notesWrapperDiv"></div>
@@ -51,9 +59,15 @@
     <div class="overlayContent1">
       <textarea placeholder="Add new note here..." id="newNoteTextArea"></textarea>
       <div class="overlayControls">
-        <div id="closeNewNoteOverlay" class="closeButton controlButton">close</div>
-        <div id="addNewNote" class="addNoteButton controlButton">add</div>
-        <div id="deleteNote" class="deleteNoteButton controlButton">delete</div>
+        <div id="closeNewNoteOverlay" class="closeButton controlButton">
+          <i class="fa fa-times my_fa_icon"></i>
+        </div>
+        <div id="addNewNote" class="addNoteButton controlButton">
+          <i class="fa fa-check my_fa_icon"></i>
+        </div>
+        <div id="deleteNote" class="deleteNoteButton controlButton">
+          <i class="fa fa-trash my_fa_icon"></i>
+        </div>
       </div>                   
     </div>
   </div>
@@ -62,27 +76,44 @@
   <div id="settingsOverlay" class="overlay1">
     <div class="overlayContent1">
       
-      <div id="debugControls">
-        <button id="shAllCookiesDebugButton">Show all cookies</button>
-        <button id="delAllCookiesDebugButton">Delete all cookies</button>
-        <button id="clearDebugMessagesButton">Clear Debug Messages</button>
+      <a href="javascript:void(0)" class="settingsNav">Import/Export</a>
+      <a href="javascript:void(0)" class="settingsNav">Debug</a>
+      
+      <div id="importExportSection">
+      
       </div>
       
-      <div id="debugMessages"></div>
+      <div id="debugSection"> <!-- DEBUG SECTION -->
+        <div id="debugControls">
+          <button id="shAllCookiesDebugButton">Show all cookies</button>
+          <button id="delAllCookiesDebugButton">Delete all cookies</button>
+          <button id="clearDebugMessagesButton">Clear Debug Messages</button>
+        </div> 
+        
+        <div id="debugMessages"></div>
+      </div> <!-- DEBUG SECTION END -->
       
       <div class="overlayControls">
-        <div id="closeSettings" class="controlButton">Close</div>
-        <div id="saveAndCloseSettings" class="controlButton">Save</div>
+        <div id="closeSettings" class="controlButton closeButton">
+          <i class="fa fa-times my_fa_icon"></i>
+        </div>
+        <!--<div id="saveAndCloseSettings" class="controlButton addNoteButton">
+          <i class="fa fa-check my_fa_icon"></i>
+        </div>-->
       </div>
       
     </div>
   </div>
   
   <!-- Open new note overlay -->
-  <div id="openNewNoteOverlay" class="openOverlay">Add</div>
+  <div id="openNewNoteOverlay" class="openOverlay">
+    <i class="fa fa-plus my_fa_icon"></i>
+  </div>
 
   <!-- Open settings overlay -->
-  <div id="openSettingsOverlay" class="openOverlay">Settings</div>
+  <div id="openSettingsOverlay" class="openOverlay">
+    <i class="fa fa-cog my_fa_icon"></i>
+  </div>
 
 </body>
 </html>

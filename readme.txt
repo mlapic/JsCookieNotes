@@ -1,9 +1,10 @@
 
-dodaj overlay sa postavkama, 
-  npr. toggle debug mode - uzmi toggle button sa bootstrapa ili nešto slično
-  dodaj konzolu za ispis informacija
-  dodaj polje sa svim porukama (kao opcija za backup) - onda mora postojati i opcija za import
+- overlay sa postavkama
+  - debug mode - konzola za ispis informacija (cookies, size i dr.), delete all cookies
+  - import/export opcija
 
-zamijeni sve ikone, stavi ih iz istog izvora 
-
-save to dropbox (?)
+- save to
+  + cookies
+  - local storage
+  - dropbox
+  
